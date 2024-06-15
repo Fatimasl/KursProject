@@ -1,12 +1,24 @@
 version: '3.7'
 services:
-  postgres:
-    image: postgres:13-alpine
+#  postgres:
+#    image: postgres:13-alpine
+#    ports:
+#      - '5432:5432'
+#    volumes:
+#      - ./data:/var/lib/postgresql/data
+#    environment:
+#      - POSTGRES_PASSWORD=1234567
+#      - POSTGRES_USER=sofiia
+#      - POSTGRES_DB=dbkurs
+  mysqldbkursproject:
+    image: mysql:latest
+    restart: always
     ports:
-      - '5432:5432'
+      - '3306:3306'
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - './data_mysql:/var/lib/mysql'
     environment:
-      - POSTGRES_PASSWORD=1234567
-      - POSTGRES_USER=sofiia
-      - POSTGRES_DB=dbkurs
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=bank
+      - MYSQL_USER=sofiia
+      - MYSQL_PASSWORD=1234567
